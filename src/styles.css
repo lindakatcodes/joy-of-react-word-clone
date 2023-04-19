@@ -161,6 +161,10 @@ h1 {
   outline-offset: 4px;
 }
 
+.guess-input-hint {
+  font-size: 0.8em;
+}
+
 .banner {
   position: fixed;
   left: 0;
