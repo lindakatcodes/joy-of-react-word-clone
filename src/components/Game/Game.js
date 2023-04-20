@@ -11,31 +11,17 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const [guess, setGuess] = React.useState("");
+  
   const [guessList, setGuessList] = React.useState([]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.info({ guess });
-
-    const newGuess = {
-      guess,
-      id: crypto.randomUUID(),
-    };
-
-    const nextGuessList = [...guessList, newGuess];
-    setGuessList(nextGuessList);
-    setGuess("");
+  function addGuessToList(guessValue) {
+    setGuessList([...guessList, guessValue]);
   }
 
   return (
     <>
       <GuessList guessList={guessList} />
-      <GuessInput
-        guess={guess}
-        setGuess={setGuess}
-        handleSubmit={handleSubmit}
-      />
+      <GuessInput addGuessToList={addGuessToList} />
     </>
   );
 }
