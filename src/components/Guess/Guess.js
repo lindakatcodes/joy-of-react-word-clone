@@ -3,15 +3,11 @@ import { range } from "../../utils";
 import { WORD_LENGTH } from "../../constants";
 
 function Guess({ value }) {
-  const splitLetters = value
-    ? value.split("")
-    : range(WORD_LENGTH).map((val) => "");
-
   return (
     <p className="guess">
-      {splitLetters.map((letter, index) => (
-        <span className="cell" key={index}>
-          {letter}
+      {range(WORD_LENGTH).map((num) => (
+        <span className="cell" key={num}>
+          {value ? value[num] : undefined}
         </span>
       ))}
     </p>
