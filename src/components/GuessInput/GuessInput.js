@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({ addGuessToList, atMaxLength }) {
+function GuessInput({ addGuessToList, gameStatus }) {
   const [guess, setGuess] = React.useState("");
 
   function handleSubmit(event) {
@@ -23,7 +23,7 @@ function GuessInput({ addGuessToList, atMaxLength }) {
         }}
         pattern="([A-Z]){5}"
         title="Guess must be 5 letters long"
-        disabled={atMaxLength}
+        disabled={gameStatus !== "running"}
       />
       <span className="guess-input-hint">Guess a 5 letter word</span>
     </form>
