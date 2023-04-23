@@ -209,6 +209,45 @@ h1 {
   border: 0;
 }
 
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+}
+
+.key {
+  position: relative;
+  width: 8%;
+  display: grid;
+  place-content: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5%;
+}
+
+.key.none {
+  background: var(--color-gray-700);
+  border-color: var(--color-gray-700);
+  color: black;
+}
+
+.key.correct {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+.key.incorrect {
+  background: var(--color-gray-300);
+  border-color: var(--color-gray-300);
+  color: white;
+}
+.key.misplaced {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: white;
+}
+
 /*
   Modal styles
 

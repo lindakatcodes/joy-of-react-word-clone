@@ -6,6 +6,8 @@ import GuessInput from "../GuessInput";
 import GuessList from "../GuessList";
 import LostBanner from "../LostBanner";
 import WonBanner from "../WonBanner";
+import Keyboard from "../Keyboard/Keyboard";
+import { checkGuess } from "../../game-helpers";
 
 function Game() {
   const [guessList, setGuessList] = React.useState([]);
@@ -24,6 +26,10 @@ function Game() {
     }
   }
 
+  const validatedGuessList = guessList.map((guess) =>
+    checkGuess(guess, answer)
+  );
+
   function resetGame() {
     setGuessList([]);
     setGameStatus("running");
@@ -32,8 +38,9 @@ function Game() {
 
   return (
     <>
-      <GuessList guessList={guessList} answer={answer} />
+      <GuessList guessList={validatedGuessList} answer={answer} />
       <GuessInput addGuessToList={addGuessToList} gameStatus={gameStatus} />
+      <Keyboard validatedGuessList={validatedGuessList} />
       {gameStatus === "won" && (
         <WonBanner numOfGuesses={guessList.length} handleReset={resetGame} />
       )}
